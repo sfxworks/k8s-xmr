@@ -1,28 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: minergate-cli
+  name: cpuminer-multi 
   labels:
-    app: minergate-cli
+    app: cpuminer-multi
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: minergate-cli
+      app: cpuminer-multi
   template:
     metadata:
       labels:
-        app: minergate-cli
+        app: cpuminer-multi
     spec:
       dnsPolicy: "None"
       dnsConfig:
         nameservers:
           - 1.1.1.1
           - 1.0.0.1
-      #nodeSelector:
-      #  core: i7
+      nodeSelector:
+        core: i7
       containers:
-      - name: minergate-cli
-        image: docker.io/minecoins/minergate-cli
-        args: ["-user" , "sfxworks@gmail.com", "-xmr"]
+      - name: cpuminer-multi
+        image: docker.io/wernight/cpuminer-multi
+        cmd: ["cpuminer"]
+        args: ["--algo=scrypt", "--url=stratum+tcp://us.litecoinpool.org:3333", "--userpass=sfxworks.1:1"]
 
