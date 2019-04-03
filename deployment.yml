@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minergate-cli
+  labels:
+    app: minergate-cli
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: minergate-cli
+  template:
+    metadata:
+      labels:
+        app: minergate-cli
+    spec:
+      dnsPolicy: "None"
+      dnsConfig:
+        nameservers:
+          - 1.1.1.1
+          - 1.0.0.1
+      #nodeSelector:
+      #  core: i7
+      containers:
+      - name: minergate-cli
+        image: docker.io/minecoins/minergate-cli
+        args: ["-user" , "sfxworks@gmail.com", "-xmr"]
+
