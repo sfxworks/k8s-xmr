@@ -1,6 +1,8 @@
-# k8s-xmr
-Based on https://hub.docker.com/r/minecoins/minergate-cli
-Which is based on https://minergate.com/faq/how-minergate-console
+# k8s-miner
+Yeah its actually litecoin now. 
+Based on https://hub.docker.com/r/wernight/cpuminer-multi
+
+Which is based on https://github.com/pooler/cpuminer
 
 Change the user or mine me some coinz :)
 
